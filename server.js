@@ -19,8 +19,8 @@ app.use(express.static(VIEWS));
 app.get('/api/imagesearch/:searchQuery',(req,res) =>{
  const searchQuery = req.params.searchQuery;
  const offset = req.query.offset;
- const top = offset +10;
- const skip = offset 
+ const top = offset >0 ? offset +10: 10;
+ const skip = offset > 0? offset: 0; 
  const data = new recentSearch({
    searchQuery,
    when: new Date()
